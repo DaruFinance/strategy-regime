@@ -79,7 +79,7 @@ selection comparison runs two rules on the live-proxy windows:
 
 ## Headline result
 
-![BTC regime segmentation (K=4)](figures/fig_segmentation_BTCUSDT_30m_3_9.png)
+![Cross-asset BIC sweep — K=4 wins everywhere](figures/fig_bic_cross_asset.png)
 
 **Across all 10 deepest-WFO crypto assets, BIC unanimously selects K=4
 regimes.** BTC, ETH, LTC, TRX, XRP, LINK, ZEC, DOGE, BCH, AVAX — each one
@@ -101,6 +101,8 @@ Per-asset BIC sweep (lower is better; bold = selected):
 | DOGE_30m_21W | 568,775 | 429,363 | **348,394** |
 | BCH_30m_20W | 1,213,686 | 1,015,285 | **889,023** |
 | AVAX_30m_17W | 1,026,748 | 858,940 | **780,651** |
+
+![BTC regime segmentation (K=4)](figures/fig_segmentation_BTCUSDT_30m_3_9.png)
 
 For BTCUSDT_30m specifically (146,120 bars, ~9 years), the K=4 regimes
 are interpretable (means in standardised feature space):
