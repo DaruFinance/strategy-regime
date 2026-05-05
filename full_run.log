@@ -1,0 +1,9 @@
+/home/daru/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+  K=2: BIC=848,957 (loglik=-424,389, t=2.3s)
+  K=3: BIC=692,709 (loglik=-346,200, t=5.5s)
+  K=4: BIC=624,839 (loglik=-312,188, t=6.9s)
+  best K by BIC = 4
+[BTCUSDT_30m] HMM K=4 fit in 7.2s (loglik=-312,188, BIC=624,839)
+
+results summary -> /home/daru/strategy-regime/regime.json
