@@ -79,6 +79,8 @@ selection comparison runs two rules on the live-proxy windows:
 
 ## Headline result
 
+![BTC regime segmentation (K=4)](figures/fig_segmentation_BTCUSDT_30m_3_9.png)
+
 **Across all 10 deepest-WFO crypto assets, BIC unanimously selects K=4
 regimes.** BTC, ETH, LTC, TRX, XRP, LINK, ZEC, DOGE, BCH, AVAX — each one
 sweeps {2, 3, 4} and lands on K=4 every time. The same regime-count
@@ -111,8 +113,12 @@ are interpretable (means in standardised feature space):
 | 3 | −0.01 | +1.53 | −0.17 | 18% | 0.977 | **high-vol** |
 
 All four regimes are sticky (stay-prob ≥ 0.97), so the decoded label is a
-useful conditioning variable for strategy selection. Per-asset stay-prob
-matrices are saved in `figures/fig_transitions_<asset>.png`.
+useful conditioning variable for strategy selection.
+
+![BTC regime transition matrix](figures/fig_transitions_BTCUSDT_30m_3_9.png)
+
+Per-asset segmentation and transition figures are saved in `figures/`
+(`fig_segmentation_<TICKER>.png`, `fig_transitions_<TICKER>.png`).
 
 ## Usage
 
