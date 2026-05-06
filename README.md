@@ -4,7 +4,7 @@
 selection.**
 
 > Companion repository to the M-series of reference implementations on
-> [daniel-v-gatto.com](https://daniel-v-gatto.com). Market data is the
+> [daru.finance](https://daru.finance). Market data is the
 > OHLCV feed used by
 > [`quant-research-framework-rs`](https://github.com/DaruFinance/quant-research-framework-rs);
 > downstream strategy joins use the `pnl_daily/` Parquet substrate produced by
