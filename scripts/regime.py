@@ -15,9 +15,9 @@ Pipeline:
          conditional: top-K strategies for the *current* regime label
 
 Usage:
-    python scripts/regime.py                        # synthetic demo
-    python scripts/regime.py --from-data \\
-        --ohlcv /home/daru/quant-research-framework-rs/data/BTCUSDT_30m.csv \\
+    python scripts/regime.py --synthetic            # synthetic demo
+    python scripts/regime.py \\
+        --ohlcv /path/to/BTCUSDT_30m.csv \\
         --asset BTC_30m_27W
 """
 from __future__ import annotations
@@ -294,8 +294,8 @@ def run_hmm_pipeline(ohlcv: pd.DataFrame, n_states: int, label: str,
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ohlcv",
-                    default="/home/daru/quant-research-framework-rs/data/BTCUSDT_30m.csv")
+    ap.add_argument("--ohlcv", default=os.environ.get("STRATEGY_OHLCV"),
+                    help="OHLCV CSV to segment (or set STRATEGY_OHLCV)")
     ap.add_argument("--asset", default=None,
                     help="strategies/asset_dir to evaluate against (Phase 3 join)")
     ap.add_argument("-K", "--n-states", type=int, default=3)
@@ -304,6 +304,8 @@ def main():
                     help="(rare) regime-switching synthetic returns; only for "
                          "testing the analysis machinery.")
     args = ap.parse_args()
+    if not args.synthetic and not args.ohlcv:
+        ap.error("pass --ohlcv or set STRATEGY_OHLCV (or use --synthetic)")
 
     summary: dict = {"mode": "synthetic" if args.synthetic else "data"}
     if not args.synthetic:

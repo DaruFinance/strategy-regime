@@ -3,13 +3,13 @@
 **Latent regime classification on market data, then conditional strategy
 selection.**
 
-> Companion repository to the M-series of reference implementations on
-> [daru.finance](https://daru.finance). Market data is the
+> The code for [Hidden-Markov regime segmentation of crypto microstructure](https://daru.finance/projects/strategy-regime),
+> one of the M-series models Daniel Gatto publishes on [daru.finance](https://daru.finance).
+> Market data is the
 > OHLCV feed used by
 > [`quant-research-framework-rs`](https://github.com/DaruFinance/quant-research-framework-rs);
 > downstream strategy joins use the `pnl_daily/` Parquet substrate produced by
-> [`strategy-pnl-daily-rs`](https://github.com/DaruFinance/strategy-pnl-daily-rs)
-> (planned).
+> [`strategy-pnl-daily-rs`](https://github.com/DaruFinance/strategy-pnl-daily-rs).
 
 ## What this is
 
@@ -37,13 +37,13 @@ but the headline number for it is in the next release.
 git clone https://github.com/DaruFinance/strategy-regime
 cd strategy-regime
 pip install -e .
-python scripts/regime.py --bic-search       # default: BTC OHLCV
+python scripts/regime.py --ohlcv /path/to/BTCUSDT_30m.csv --bic-search
 ```
 
-The default reads `BTCUSDT_30m.csv` from the production framework's
-`data/` dir and writes `figures/fig_segmentation_BTCUSDT_30m.png`,
-`figures/fig_transitions_BTCUSDT_30m.png`, plus `regime.json`. Pass
-`--ohlcv path/to/file.csv` to point elsewhere.
+Pass the OHLCV CSV with `--ohlcv` (or set the `STRATEGY_OHLCV` environment
+variable). For `BTCUSDT_30m.csv` the script writes
+`figures/fig_segmentation_BTCUSDT_30m.png`,
+`figures/fig_transitions_BTCUSDT_30m.png`, plus `regime.json`.
 
 A `--synthetic` flag runs the regime-switching toy returns demo (only
 used by the smoke test).
@@ -125,14 +125,14 @@ Per-asset segmentation and transition figures are saved in `figures/`
 ## Usage
 
 ```bash
-# Default (BTC 30m, BIC sweep over K in {2,3,4}):
-python scripts/regime.py --bic-search
+# BTC 30m, BIC sweep over K in {2,3,4}:
+python scripts/regime.py --ohlcv /path/to/BTCUSDT_30m.csv --bic-search
 
 # Other asset:
-python scripts/regime.py --ohlcv /home/daru/quant-research-framework-rs/data/SOLUSDT_1h.csv
+python scripts/regime.py --ohlcv /path/to/SOLUSDT_1h.csv
 
 # Fix K instead of searching:
-python scripts/regime.py -K 3
+python scripts/regime.py --ohlcv /path/to/BTCUSDT_30m.csv -K 3
 ```
 
 `--asset BTC_30m_27W` (when implemented in the next release) will join the
